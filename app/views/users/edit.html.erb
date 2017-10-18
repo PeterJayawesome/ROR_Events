@@ -1,0 +1,20 @@
+<a href="/events">Events Dashboard</a>
+<h3>Edit Your Profile</h3>
+<form action="/users/<%=@user.id%>" method="post">
+	<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+	<input type="hidden" name="_method" value="patch">
+	<label>First Name:</label>
+	<input type="text" name="user[first_name]" value="<%=@user.first_name%>"><br>
+	<label>Last Name:</label>	
+	<input type="text" name="user[last_name]" value="<%=@user.last_name%>"><br>
+	<label>Email:</label>
+	<input type="text" name="user[email]" value="<%=@user.email%>"><br>
+	<label>Location:</label>
+	<input type="text" name="user[email]" value="<%=@user.email%>">
+	<select name="user[state_id]">
+		<% all_states.each do |state| %>
+			<option value="<%=state.id%>" <%if state.id == @user.state_id %> selected <%end%>><%=state.abbreviation%></option>
+		<%end%>
+	</select><br>
+	<input type="submit" value="Update Records">
+</form>
